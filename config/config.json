@@ -1,0 +1,82 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "intranet-outlook-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/intranetOutlook/IntranetOutlookWebPart.js",
+          "manifest": "./src/webparts/intranetOutlook/IntranetOutlookWebPart.manifest.json"
+        }
+      ]
+    },
+    "intranet-training-calendar-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/intranetTrainingCalendar/IntranetTrainingCalendarWebPart.js",
+          "manifest": "./src/webparts/intranetTrainingCalendar/IntranetTrainingCalendarWebPart.manifest.json"
+        }
+      ]
+    },
+    "intranet-upcoming-meetings-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/intranetUpcomingMeetings/IntranetUpcomingMeetingsWebPart.js",
+          "manifest": "./src/webparts/intranetUpcomingMeetings/IntranetUpcomingMeetingsWebPart.manifest.json"
+        }
+      ]
+    },
+    "intranet-upcoming-holidays-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/intranetUpcomingHolidays/IntranetUpcomingHolidaysWebPart.js",
+          "manifest": "./src/webparts/intranetUpcomingHolidays/IntranetUpcomingHolidaysWebPart.manifest.json"
+        }
+      ]
+    },
+    "intranet-gallery-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/intranetGallery/IntranetGalleryWebPart.js",
+          "manifest": "./src/webparts/intranetGallery/IntranetGalleryWebPart.manifest.json"
+        }
+      ]
+    },
+    "intranet-employee-spotlight-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/intranetEmployeeSpotlight/IntranetEmployeeSpotlightWebPart.js",
+          "manifest": "./src/webparts/intranetEmployeeSpotlight/IntranetEmployeeSpotlightWebPart.manifest.json"
+        }
+      ]
+    },
+    "quote-of-the-day-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/quoteOfTheDay/QuoteOfTheDayWebPart.js",
+          "manifest": "./src/webparts/quoteOfTheDay/QuoteOfTheDayWebPart.manifest.json"
+        }
+      ]
+    },
+    "intranet-key-document-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/intranetKeyDocument/IntranetKeyDocumentWebPart.js",
+          "manifest": "./src/webparts/intranetKeyDocument/IntranetKeyDocumentWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "IntranetOutlookWebPartStrings": "lib/webparts/intranetOutlook/loc/{locale}.js",
+    "IntranetTrainingCalendarWebPartStrings": "lib/webparts/intranetTrainingCalendar/loc/{locale}.js",
+    "IntranetUpcomingMeetingsWebPartStrings": "lib/webparts/intranetUpcomingMeetings/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
+    "IntranetUpcomingHolidaysWebPartStrings": "lib/webparts/intranetUpcomingHolidays/loc/{locale}.js",
+    "IntranetGalleryWebPartStrings": "lib/webparts/intranetGallery/loc/{locale}.js",
+    "IntranetEmployeeSpotlightWebPartStrings": "lib/webparts/intranetEmployeeSpotlight/loc/{locale}.js",
+    "QuoteOfTheDayWebPartStrings": "lib/webparts/quoteOfTheDay/loc/{locale}.js",
+    "IntranetKeyDocumentWebPartStrings": "lib/webparts/intranetKeyDocument/loc/{locale}.js"
+  }
+}

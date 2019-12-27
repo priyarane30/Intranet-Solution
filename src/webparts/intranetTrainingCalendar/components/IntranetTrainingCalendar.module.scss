@@ -1,0 +1,123 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.intranetTrainingCalendar {
+  .container {
+    max-width: 100%;
+    margin: 0px auto;
+    border:1px rgba(218, 215, 215, 0.699) solid;
+    color: black;
+    min-height: 330px;
+    img{
+      width:25px;
+    }
+  }
+  .rightalig{
+    float:right;
+    padding-right: 15px;
+    padding-top: 10px;
+    color: #000;
+  }
+  .viewAll{
+    float:right;
+    position: absolute;
+    right: 0px;
+    bottom: 0;
+  }
+  .header{
+    // margin-left: 10px;
+    font-size: 18px;
+    margin:0px !important;
+    background-color: #F3F2F1;
+    color: #323130;
+    font-weight: 600;
+    padding: 10px;
+   }
+
+   .subject {
+    @include ms-font-m;
+    color:#605E5C;
+    float: left;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 12px 0 0;
+  }
+  .sectionbody {
+    margin: 0;
+    padding: 0;
+    float: left;
+    width: 100%;
+    height: 205px;
+  }
+  .item {
+  padding-bottom: 6px;
+  padding-top: 6px;
+  padding-left: 4px;
+  padding-right: 0px;
+  clear: both;
+  }
+  .jobsection {
+    height: 174px;
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .jobitem {
+    margin: 0;
+    padding: 7px 10px;
+    float: left;
+    width: 100%;
+  }
+  .dateitem {
+    margin: 0;
+    padding: 5px;
+    background: #7280ce;
+    height: 55px;
+    line-height: 40px;
+  }
+  .primarytext {
+    color: #ffffff;
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+    padding: 5px 0 0;
+  }
+.secondarytext {
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  margin: 0;
+  padding: 0 0 5px;
+  }
+  .headingborder{
+    margin: 0;
+    float: left;
+    width: 100%;
+    border-bottom: 2px solid #26badf;
+  }
+  .topictitle {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+  }
+  .topicdesc {
+    margin: 5px 0 0 0;
+    padding: 0;
+    font-size: 11px;
+    color: #444;
+    font-family: 'open-sans-bold' !important;
+  }
+  .floater{
+    color:#7280ce;
+  }
+  .trainingDate{
+    color: #605e5c;
+    font-size: 12px;
+    padding-top: 5px;
+    clear: both;
+    margin: 0;
+  }
+}

@@ -1,0 +1,39 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.intranetEmployeeSpotlight {
+  .container {
+    max-width: 100%;
+    margin: 0px auto;
+    border:1px rgba(218, 215, 215, 0.699) solid;
+   // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    color: black;
+   
+    // img{
+    //   width:25px;
+    // }
+  }
+  .viewAll{
+    float:right;
+    position: absolute;
+    right: 0px;
+    bottom: 0;
+  }
+  .header{
+    font-size: 18px;
+	  margin:0px !important;
+    background-color: #F3F2F1;
+    color: #323130;
+    font-weight: 600;
+    padding: 10px;
+   }
+   .paddin{
+     padding-top: 20px;
+     padding-left: 20px;
+   }
+   .rightalig{
+    float:right;
+    padding-right: 15px;
+    padding-top: 10px;
+    color: #000;
+  }
+}
