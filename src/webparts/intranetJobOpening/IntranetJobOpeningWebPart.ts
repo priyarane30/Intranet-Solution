@@ -7,21 +7,21 @@ import {
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
 
-import * as strings from 'IntranetNewJoineeWebPartStrings';
-import IntranetNewJoinee from './components/IntranetNewJoinee';
-import { IIntranetNewJoineeProps } from './components/IIntranetNewJoineeProps';
+import * as strings from 'IntranetJobOpeningWebPartStrings';
+import IntranetJobOpening from './components/IntranetJobOpening';
+import { IIntranetJobOpeningProps } from './components/IIntranetJobOpeningProps';
 
-export interface IIntranetNewJoineeWebPartProps {
+export interface IIntranetJobOpeningWebPartProps {
   description: string;
 }
 
-export default class IntranetNewJoineeWebPart extends BaseClientSideWebPart<IIntranetNewJoineeWebPartProps> {
+export default class IntranetJobOpeningWebPart extends BaseClientSideWebPart<IIntranetJobOpeningWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IIntranetNewJoineeProps > = React.createElement(
-      IntranetNewJoinee,
+    const element: React.ReactElement<IIntranetJobOpeningProps > = React.createElement(
+      IntranetJobOpening,
       {
-        siteurl: this.context.pageContext.web.absoluteUrl
+        description: this.properties.description
       }
     );
 
@@ -47,7 +47,7 @@ export default class IntranetNewJoineeWebPart extends BaseClientSideWebPart<IInt
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('siteurl', {
+                PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
                 })
               ]

@@ -97,6 +97,14 @@
           "manifest": "./src/webparts/intranetNewJoinee/IntranetNewJoineeWebPart.manifest.json"
         }
       ]
+    },
+    "intranet-job-opening-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/intranetJobOpening/IntranetJobOpeningWebPart.js",
+          "manifest": "./src/webparts/intranetJobOpening/IntranetJobOpeningWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -113,6 +121,7 @@
     "IntranetBirthdayWebPartStrings": "lib/webparts/intranetBirthday/loc/{locale}.js",
     "IntranetAnniversaryWebPartStrings": "lib/webparts/intranetAnniversary/loc/{locale}.js",
     "IntranetAnnouncementsWebPartStrings": "lib/webparts/intranetAnnouncements/loc/{locale}.js",
-    "IntranetNewJoineeWebPartStrings": "lib/webparts/intranetNewJoinee/loc/{locale}.js"
+    "IntranetNewJoineeWebPartStrings": "lib/webparts/intranetNewJoinee/loc/{locale}.js",
+    "IntranetJobOpeningWebPartStrings": "lib/webparts/intranetJobOpening/loc/{locale}.js"
   }
 }
