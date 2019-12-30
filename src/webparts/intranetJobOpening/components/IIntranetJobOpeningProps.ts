@@ -1,3 +1,3 @@
 export interface IIntranetJobOpeningProps {
-  description: string;
+  siteurl: string;
 }

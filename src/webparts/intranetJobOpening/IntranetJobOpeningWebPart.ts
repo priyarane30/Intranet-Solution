@@ -21,7 +21,7 @@ export default class IntranetJobOpeningWebPart extends BaseClientSideWebPart<IIn
     const element: React.ReactElement<IIntranetJobOpeningProps > = React.createElement(
       IntranetJobOpening,
       {
-        description: this.properties.description
+        siteurl: this.context.pageContext.web.absoluteUrl
       }
     );
 
