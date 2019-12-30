@@ -11,7 +11,6 @@ declare interface IIntranetOutlookWebPartStrings {
   ShowInboxOnly: string;
   ShowInboxOnlyCallout: string;
   ViewAll: string;
-  
 }
 
 declare module 'IntranetOutlookWebPartStrings' {

@@ -1,0 +1,47 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.intranetBirthday {
+    .container {
+    width: 100%;
+    margin: 0px auto;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .row {
+    @include ms-Grid-row;
+    @include ms-fontColor-white;
+    padding: 20px;
+  }
+
+  .column {
+    @include ms-Grid-col;
+    @include ms-lg10;
+    @include ms-xl8;
+    @include ms-xlPush2;
+    @include ms-lgPush1;
+  }
+  
+  .para1{
+    color:green;
+    font-size: 15px;
+  }
+  .para{
+    color:green;
+    font-size: 15px;
+    font-weight: 900;
+    padding-top: 20px;
+    padding-right: 10px;
+  }
+  .BirthdayHeader{
+    color:purple;
+    font-size: 15px;
+     padding-top: 37px;
+    font-weight: 900;  
+  }
+  .rightalig{
+    float:right;
+    padding-right: 15px;
+    padding-top: 10px;
+    color: #000;
+  }
+}
