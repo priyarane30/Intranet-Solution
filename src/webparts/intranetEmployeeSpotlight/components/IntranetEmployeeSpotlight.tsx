@@ -13,7 +13,7 @@ import axios from 'axios';
 const logo: string = require('../assets/logo.png');
 
 export default class IntranetEmployeeSpotlight extends React.Component<IIntranetEmployeeSpotlightProps, IIntranetEmployeeSpotlightState> {
- 
+
   public constructor(props: IIntranetEmployeeSpotlightProps, state: IIntranetEmployeeSpotlightState) {
     super(props);
     this.state = {
@@ -33,25 +33,27 @@ export default class IntranetEmployeeSpotlight extends React.Component<IIntranet
   public componentDidMount() {
     this.GetItemsForEmployeeAward();
   }
-  public GetItemsForEmployeeAward=()=> {
+  public GetItemsForEmployeeAward = () => {
     axios.get(`${this.props.siteurl}/_api/web/lists/getbytitle('${this.props.listName}')/items?$select=NameOf_x0020_Employee/EMail,NameOf_x0020_Employee/FirstName,NameOf_x0020_Employee/LastName,NameOf_x0020_Employee/EMail,AwardName,Expiry_x0020_Date&$expand=NameOf_x0020_Employee/Id&$Filter=Expiry_x0020_Date ge datetime'${new Date().toISOString()}'`)
       .then(res => {
-        const items = res.data.value;
-        this.setState({ items });
+        if (res.data.value.length > 0) {
+          const items = res.data.value;
+          this.setState({ items });
+        }
       }).catch(error => {
         console.log(error);
       });
-  
+
   }
- 
+
   public render(): React.ReactElement<IIntranetEmployeeSpotlightProps> {
     return (
-      <div className={ styles.intranetEmployeeSpotlight }>
-        <div className={ styles.container }>
-        <img src={`${logo}`} className={styles.rightalig} />
+      <div className={styles.intranetEmployeeSpotlight}>
+        <div className={styles.container}>
+          <img src={`${logo}`} className={styles.rightalig} />
           <p className={styles.header}>Employee Spotlight</p>
           <div className={styles.paddin}>
-            {this.state.items.map((item, key)=> {
+            {this.state.items.map((item, key) => {
               return (<div>
                 <Persona primaryText={`${item.NameOf_x0020_Employee.FirstName} ${item.NameOf_x0020_Employee.LastName}`}   //Set user's Mail and subject
                   secondaryText={item.AwardName}

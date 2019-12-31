@@ -31,8 +31,10 @@ export default class IntranetTrainingCalendar extends React.Component<IIntranetT
   public GetItemsForTraining = () => {
     axios.get(`${this.props.siteurl}/_api/web/lists/getbytitle('${this.props.listName}')/items?$Filter=IsCompleted eq 'False' and TrainingDate ge datetime'${new Date().toISOString()}'&$top=3`)
       .then(res => {
-        const items = res.data.value;
-        this.setState({ items });
+        if (res.data.value.length > 0) {
+          const items = res.data.value;
+          this.setState({ items });
+        }
       }).catch(error => {
         console.log(error);
       });
@@ -54,7 +56,7 @@ export default class IntranetTrainingCalendar extends React.Component<IIntranetT
                         <div className="ms-Grid-row">
                           <div className="ms-Grid-col ms-sm4 ms-md4">
                             <div className={styles.dateitem}>
-                              <p className={styles.primarytext}>{(new Date(item.TrainingDate).toDateString().substring(4,10))}</p>
+                              <p className={styles.primarytext}>{(new Date(item.TrainingDate).toDateString().substring(4, 10))}</p>
                               {/* <hr />
                               <p className={styles.secondarytext}>{(new Date(item.EndDate).toLocaleDateString())}</p> */}
                             </div>

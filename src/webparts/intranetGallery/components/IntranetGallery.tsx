@@ -23,8 +23,10 @@ export default class IntranetGallery extends React.Component<IIntranetGalleryPro
   public getimage = () => {
     axios.get(`${this.props.siteurl}/_api/web/lists/getbytitle('Quote_Picture')/items?$select=FileRef/FileRef&$top=9`)
       .then(res => {
-        const items = res.data.value;
-        this.setState({ items });
+        if (res.data.value.length > 0) {
+          const items = res.data.value;
+          this.setState({ items });
+        }
       }).catch(error => {
         console.log(error);
       });

@@ -28,10 +28,12 @@ export default class QuoteOfTheDay extends React.Component<IQuoteOfTheDayProps, 
   public GetItemsForQuoteOfTheDay = () => {
     axios.get(`${this.props.siteurl}/_api/web/lists/getbytitle('${this.props.listName}')/Items(${remainingNumberOFYear})/File`)
       .then(res => {
-        this.setState({
-          ServerRelativeUrl: res.data.ServerRelativeUrl,
-          Name: res.data.Name
-        });
+        if (res.data.value.length > 0) {
+          this.setState({
+            ServerRelativeUrl: res.data.ServerRelativeUrl,
+            Name: res.data.Name
+          });
+        }
       }).catch(error => {
         console.log(error);
       });

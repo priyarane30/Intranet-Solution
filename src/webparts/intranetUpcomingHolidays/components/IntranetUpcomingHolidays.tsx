@@ -31,8 +31,10 @@ export default class IntranetUpcomingHolidays extends React.Component<IIntranetU
   public GetItemsForHolidays = () => {
     axios.get(`${this.props.siteurl}/_api/web/lists/getbytitle('${this.props.listName}')/items?$Filter=DateOfHolidays ge datetime'${new Date().toISOString()}'&$top=3`)
       .then(res => {
-        const items = res.data.value;
-        this.setState({ items });
+        if (res.data.value.length > 0) {
+          const items = res.data.value;
+          this.setState({ items });
+        }
       }).catch(error => {
         console.log(error);
       });
@@ -53,7 +55,7 @@ export default class IntranetUpcomingHolidays extends React.Component<IIntranetU
                         <div className="ms-Grid-row">
                           <div className="ms-Grid-col ms-sm4 ms-md4">
                             <div className={styles.dateitem}>
-                              <p className={styles.primarytext}>{(new Date(item.DateOfHolidays).toDateString().substring(4,10))}</p>
+                              <p className={styles.primarytext}>{(new Date(item.DateOfHolidays).toDateString().substring(4, 10))}</p>
                               <p className={styles.secondarytext}>{item.dayfromdate}</p>
                             </div>
                           </div>

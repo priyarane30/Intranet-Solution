@@ -32,8 +32,10 @@ export default class IntranetKeyDocument extends React.Component<IIntranetKeyDoc
   public GetItemsForDocuments = () => {
     axios.get(`${this.props.siteurl}/_api/web/lists/getbytitle('Documents')/items?$select=File,File_x0020_Type&$expand=File`)
       .then(res => {
-        const items = res.data.value;
-        this.setState({ items });
+        if (res.data.value.length > 0) {
+          const items = res.data.value;
+          this.setState({ items });
+        }
       }).catch(error => {
         console.log(error);
       });
