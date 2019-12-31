@@ -73,7 +73,10 @@ export default class IntranetJobOpening extends React.Component<
                               </div>
                             </div>
                             <div className="ms-Grid-col  ms-md8 ">
-                              <div className={styles.subject}>{item.Title}</div>
+                            <a href="https://synoverge.sharepoint.com/" data-interception="off" target="_blank" rel="noopener noreferrer">
+                            <div className={styles.subject}>{item.Title}</div>
+                            </a>
+                            
                               <div className={styles.subject1}>
                                 {item.Experience} Years
                               </div>

@@ -9,14 +9,8 @@ import { Link } from "office-ui-fabric-react/lib/components/Link";
 const icon: string = require("../assets/icon.png");
 const arrow: string = require("../assets/arrow.jpg");
 
-export default class IntranetAnnouncements extends React.Component<
-  IIntranetAnnouncementsProps,
-  IIntranetAnnouncementsState
-> {
-  public constructor(
-    props: IIntranetAnnouncementsProps,
-    state: IIntranetAnnouncementsState
-  ) {
+export default class IntranetAnnouncements extends React.Component<IIntranetAnnouncementsProps, IIntranetAnnouncementsState> {
+  public constructor(props: IIntranetAnnouncementsProps,state: IIntranetAnnouncementsState) {
     super(props);
 
     this.state = {
@@ -40,7 +34,7 @@ export default class IntranetAnnouncements extends React.Component<
       url: anncurl,
       type: "GET",
       headers: { Accept: "application/json; odata=verbose;" },
-      success: function(resultData) {
+      success: function (resultData) {
         //filter Data
         console.log("Result-data", resultData.d.results);
 
@@ -58,7 +52,7 @@ export default class IntranetAnnouncements extends React.Component<
           });
         }
       },
-      error: function(jqXHR, textStatus, errorThrown) {
+      error: function (jqXHR, textStatus, errorThrown) {
         console.log(jqXHR);
       }
     });
@@ -76,7 +70,7 @@ export default class IntranetAnnouncements extends React.Component<
               <div className={styles.item}>
                 <div className={styles.jobsection}>
                   <div className={styles.jobitem}>
-                    {this.state.items.map(function(item, key) {
+                    {this.state.items.map(function (item, key) {
                       return (
                         <div>
                           <div className="ms-Grid-row">

@@ -54,7 +54,7 @@ export default class IntranetTrainingCalendar extends React.Component<IIntranetT
                         <div className="ms-Grid-row">
                           <div className="ms-Grid-col ms-sm4 ms-md4">
                             <div className={styles.dateitem}>
-                              <p className={styles.primarytext}>{(new Date(item.TrainingDate).toLocaleDateString())}</p>
+                              <p className={styles.primarytext}>{(new Date(item.TrainingDate).toDateString().substring(4,10))}</p>
                               {/* <hr />
                               <p className={styles.secondarytext}>{(new Date(item.EndDate).toLocaleDateString())}</p> */}
                             </div>

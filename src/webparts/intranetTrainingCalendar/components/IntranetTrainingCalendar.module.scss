@@ -26,11 +26,11 @@
   }
   .header{
     // margin-left: 10px;
-    font-size: 18px;
+    font-size: 16px;
     margin:0px !important;
     background-color: #F3F2F1;
     color: #323130;
-    font-weight: 600;
+    font-weight: 500;
     padding: 10px;
    }
 
@@ -42,7 +42,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    margin: 12px 0 0;
+    margin: 15px 0 0;
   }
   .sectionbody {
     margin: 0;
@@ -116,7 +116,6 @@
   .trainingDate{
     color: #605e5c;
     font-size: 12px;
-    padding-top: 5px;
     clear: both;
     margin: 0;
   }

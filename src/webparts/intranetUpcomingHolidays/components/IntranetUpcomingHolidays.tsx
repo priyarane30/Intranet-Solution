@@ -53,7 +53,7 @@ export default class IntranetUpcomingHolidays extends React.Component<IIntranetU
                         <div className="ms-Grid-row">
                           <div className="ms-Grid-col ms-sm4 ms-md4">
                             <div className={styles.dateitem}>
-                              <p className={styles.primarytext}>{(new Date(item.DateOfHolidays).toLocaleDateString())}</p>
+                              <p className={styles.primarytext}>{(new Date(item.DateOfHolidays).toDateString().substring(4,10))}</p>
                               <p className={styles.secondarytext}>{item.dayfromdate}</p>
                             </div>
                           </div>
