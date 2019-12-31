@@ -73,7 +73,7 @@ export default class IntranetTrainingCalendar extends React.Component<IIntranetT
               </div>
             </div>
           </div>
-          <Link href={`${this.props.siteurl}/Lists/${this.props.listName}/AllItems.aspx`} target='_blank' className={styles.viewAll}>
+          <Link href={`${this.props.siteurl}/SitePages/TrainingCalendar.aspx`} target='_blank' className={styles.viewAll}>
             <img src={`${arrow}`} className={styles.viewAll} />
           </Link>
         </div>

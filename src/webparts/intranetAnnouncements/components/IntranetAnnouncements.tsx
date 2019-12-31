@@ -94,12 +94,10 @@ export default class IntranetAnnouncements extends React.Component<IIntranetAnno
               </div>
             </div>
           </div>
-
           <Link
-            href={`${this.props.siteurl}/Lists/${this.props.listName}/AllItems.aspx`}
+            href={`${this.props.siteurl}/SitePages/Announcement.aspx`}
             target="_blank"
-            className={styles.viewAll}
-          >
+            className={styles.viewAll}>
             <img src={`${arrow}`} className={styles.viewAll} />
           </Link>
         </div>

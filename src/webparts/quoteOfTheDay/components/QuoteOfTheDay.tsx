@@ -11,7 +11,7 @@ const logo: string = require('../assets/logo.png');
 var today = new Date();
 var dayyear = Number(new Date(today.getFullYear(), 0, 1));
 var NumberdayOfYear = Math.ceil((Number(today) - dayyear) / 86400000);
-var remainingNumberOFYear = 365 - NumberdayOfYear;
+var remainingNumberOFYear = 366 - NumberdayOfYear;
 //End calculate number of day for  daily new quote
 
 export default class QuoteOfTheDay extends React.Component<IQuoteOfTheDayProps, IQuoteOfTheDayState> {

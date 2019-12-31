@@ -105,6 +105,14 @@
           "manifest": "./src/webparts/intranetJobOpening/IntranetJobOpeningWebPart.manifest.json"
         }
       ]
+    },
+    "people-directory-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/peopleDirectory/PeopleDirectoryWebPart.js",
+          "manifest": "./src/webparts/peopleDirectory/PeopleDirectoryWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -122,6 +130,8 @@
     "IntranetAnniversaryWebPartStrings": "lib/webparts/intranetAnniversary/loc/{locale}.js",
     "IntranetAnnouncementsWebPartStrings": "lib/webparts/intranetAnnouncements/loc/{locale}.js",
     "IntranetNewJoineeWebPartStrings": "lib/webparts/intranetNewJoinee/loc/{locale}.js",
-    "IntranetJobOpeningWebPartStrings": "lib/webparts/intranetJobOpening/loc/{locale}.js"
+    "IntranetJobOpeningWebPartStrings": "lib/webparts/intranetJobOpening/loc/{locale}.js",
+    "PeopleDirectoryWebPartStrings": "lib/webparts/peopleDirectory/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
   }
 }

@@ -71,7 +71,7 @@ export default class IntranetUpcomingHolidays extends React.Component<IIntranetU
               </div>
             </div>
           </div>
-          <Link href={`${this.props.siteurl}/Lists/${this.props.listName}/AllItems.aspx`} target='_blank' className={styles.viewAll}>
+          <Link href={`${this.props.siteurl}/SitePages/UpcomingHolidays.aspx`} target='_blank' className={styles.viewAll}>
             <img src={`${arrow}`} className={styles.viewAll} />
           </Link>
         </div>
