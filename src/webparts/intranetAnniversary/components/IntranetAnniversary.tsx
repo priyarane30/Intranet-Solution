@@ -2,8 +2,7 @@ import * as React from "react";
 import { IIntranetAnniversaryProps } from "./IIntranetAnniversaryProps";
 import { IIntranetAnniversaryState } from "./IIntranetAnniversaryState";
 import styles from "./IntranetAnniversary.module.scss";
-import * as jquery from "jquery";
-import { escape } from "@microsoft/sp-lodash-subset";
+import axios from "axios";
 
 const logo: string = require('../assets/01.jpg');
 
@@ -51,38 +50,19 @@ export default class IntranetAnniversary extends React.Component<
   }
 
   public GetItemsForAnniversary() {
-    var AnniversaryHandler = this;
-    var anncurl = `${this.props.siteurl}/_api/web/lists/getbytitle('EmployeeContact')/items?$top=1000`;
-    jquery.ajax({
-      url: anncurl,
-      type: "GET",
-      headers: { Accept: "application/json; odata=verbose;" },
-      success: function(resultData) {
-        //filter Data
-        var dataFiltered = resultData.d.results.filter(
-          data =>
-            data.Status == "Active" &&
-            new Date(data.DateofJoining).getDate() == new Date().getDate() &&
-            new Date(data.DateofJoining).getMonth() == new Date().getMonth() &&
-            new Date(data.DateOfJoining).getFullYear() !=
-              new Date().getFullYear()
-        );
-        console.log(dataFiltered);
-        if (
-          dataFiltered != undefined &&
-          dataFiltered != null &&
-          dataFiltered.length > 0
-        ) {
-          //if dataFiltered has values
-          AnniversaryHandler.setState({
-            items: dataFiltered
-          });
-        }
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        console.log(jqXHR);
-      }
+    axios.get(`${this.props.siteurl}/_api/web/lists/getbytitle('EmployeeContact')/items?$top=1000`)
+    .then(res => {
+      var dataFiltered = res.data.value.filter(
+            data => data.Status == 'Active' && new Date(data.DateofJoining).getDate()== new Date().getDate() && new Date(data.DateofJoining).getMonth() == new Date().getMonth() && new Date(data.DateOfJoining).getFullYear()!= new Date().getFullYear(),
+            
+             );
+     
+      this.setState({ items: dataFiltered });
+    })
+    .catch(error => {
+      console.log(error);
     });
+   
   }
   public render(): React.ReactElement<IIntranetAnniversaryProps> {
     return (

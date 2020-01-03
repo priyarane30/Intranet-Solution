@@ -113,6 +113,14 @@
           "manifest": "./src/webparts/peopleDirectory/PeopleDirectoryWebPart.manifest.json"
         }
       ]
+    },
+    "intranet-poll-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/intranetPoll/IntranetPollWebPart.js",
+          "manifest": "./src/webparts/intranetPoll/IntranetPollWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -132,6 +140,7 @@
     "IntranetNewJoineeWebPartStrings": "lib/webparts/intranetNewJoinee/loc/{locale}.js",
     "IntranetJobOpeningWebPartStrings": "lib/webparts/intranetJobOpening/loc/{locale}.js",
     "PeopleDirectoryWebPartStrings": "lib/webparts/peopleDirectory/loc/{locale}.js",
-    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "IntranetPollWebPartStrings": "lib/webparts/intranetPoll/loc/{locale}.js"
   }
 }

@@ -1,0 +1,45 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.intranetPoll {
+  .container {
+    max-width: 100%;
+    margin: 0px auto;
+    border:1px rgba(218, 215, 215, 0.699) solid;
+    color: black;
+    min-height: 330px;
+  }
+  .workingOnItSpinner {
+    display: block;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 33.33333%;
+    line-height: 1.5em;
+    padding: 20px 20px;
+  }
+
+  .loadingLabel {
+    position: relative;
+    top: -25px;
+
+    left: 35px;
+  }
+  .para{
+    color:blueviolet;
+    font-size: 15px;
+    // float:right;
+    font-weight: 900;
+    padding-top: 20px;
+    padding-right: 10px;
+  }
+  
+  .radiocolor{
+    color: #8a2be2;
+    padding-top: 13px; 
+  }
+
+  .pollquestion{
+    color:black;
+    font-size: 24px;
+  }
+}

@@ -2,7 +2,6 @@ import * as React from "react";
 import styles from "./IntranetNewJoinee.module.scss";
 import { IIntranetNewJoineeProps } from "./IIntranetNewJoineeProps";
 import { IIntranetNewJoineeState } from "./IIntranetNewJoineeState";
-import { escape } from "@microsoft/sp-lodash-subset";
 import axios from "axios";
 
 const logo: string = require("../assets/03.jpg");

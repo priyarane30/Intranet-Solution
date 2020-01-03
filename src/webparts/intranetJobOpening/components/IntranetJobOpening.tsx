@@ -2,11 +2,10 @@ import * as React from "react";
 import styles from "./IntranetJobOpening.module.scss";
 import { IIntranetJobOpeningProps } from "./IIntranetJobOpeningProps";
 import { IIntranetJobOpeningState } from "./IIntranetJobOpeningState";
-import { escape } from "@microsoft/sp-lodash-subset";
-import * as jquery from "jquery";
 import { Link } from "office-ui-fabric-react/lib/components/Link";
+import axios from "axios";
 
-//const icon: string = require('../assets/icon.png');
+
 const arrow: string = require("../assets/arrow.jpg");
 
 export default class IntranetJobOpening extends React.Component<
@@ -34,21 +33,13 @@ export default class IntranetJobOpening extends React.Component<
   }
 
   public GetItemsForJobOpening() {
-    var JobOpeningHandler = this;
-    var anncurl = `${this.props.siteurl}/_api/web/lists/getbytitle('OpenPostions')/items?$orderby=RaisedDate desc&$top=3`;
-    jquery.ajax({
-      url: anncurl,
-      type: "GET",
-      headers: { Accept: "application/json; odata=verbose;" },
-      success: function(resultData) {
-        JobOpeningHandler.setState({
-          //  items: dataFiltered
-          items: resultData.d.results
-        });
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        console.log(jqXHR);
-      }
+ axios.get(`${this.props.siteurl}/_api/web/lists/getbytitle('OpenPostions')/items?$orderby=RaisedDate desc&$top=3`)
+    .then(res => {
+      const Jobopeningdata = res.data.value;
+      this.setState({ items: Jobopeningdata});
+    })
+    .catch(error => {
+      console.log(error);
     });
   }
 

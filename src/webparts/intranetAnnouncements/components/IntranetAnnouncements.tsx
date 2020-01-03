@@ -2,8 +2,7 @@ import * as React from "react";
 import styles from "./IntranetAnnouncements.module.scss";
 import { IIntranetAnnouncementsProps } from "./IIntranetAnnouncementsProps";
 import { IIntranetAnnouncementsState } from "./IIntranetAnnouncementsState";
-import { escape } from "@microsoft/sp-lodash-subset";
-import * as jquery from "jquery";
+import axios from "axios";
 import { Link } from "office-ui-fabric-react/lib/components/Link";
 
 const icon: string = require("../assets/icon.png");
@@ -28,33 +27,16 @@ export default class IntranetAnnouncements extends React.Component<IIntranetAnno
   }
 
   public GetItemsForAnnouncement() {
-    var BirthdayHandler = this;
-    var anncurl = `${this.props.siteurl}/_api/web/lists/getbytitle('${this.props.listName}')/items`;
-    jquery.ajax({
-      url: anncurl,
-      type: "GET",
-      headers: { Accept: "application/json; odata=verbose;" },
-      success: function (resultData) {
-        //filter Data
-        console.log("Result-data", resultData.d.results);
-
-        var dataFiltered = resultData.d.results.filter(
-          data => new Date(data.ExpiryDate) >= new Date()
-        );
-        if (
-          dataFiltered != undefined &&
-          dataFiltered != null &&
-          dataFiltered.length > 0
-        ) {
-          //if dataFiltered has values
-          BirthdayHandler.setState({
-            items: dataFiltered
-          });
-        }
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        console.log(jqXHR);
-      }
+    axios.get(`${this.props.siteurl}/_api/web/lists/getbytitle('${this.props.listName}')/items?$top=1000`)
+    .then(res => {
+      var dataFiltered = res.data.value.filter(
+            data => new Date(data.ExpiryDate) >= new Date()           
+             );
+     
+      this.setState({ items: dataFiltered });
+    })
+    .catch(error => {
+      console.log(error);
     });
   }
 

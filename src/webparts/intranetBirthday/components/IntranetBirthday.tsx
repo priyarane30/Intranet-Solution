@@ -1,6 +1,6 @@
 import * as React from "react";
 import { IIntranetBirthdayProps } from "./IIntranetBirthdayProps";
-import * as jquery from "jquery";
+import axios from "axios";
 import styles from "./IntranetBirthday.module.scss";
 import { IBirthdayState } from './IIntranetBirthdayState';
 
@@ -23,10 +23,10 @@ export default class Birthday extends React.Component<IIntranetBirthdayProps,IBi
       currentdate: new Date().getFullYear()
     };
   }
-  componentDidMount() {
+  public componentDidMount() {
     this.GetItemsForBirthday();
   }
-  componentWillMount() {
+  public componentWillMount() {
     var timer = setInterval(() => {
       this.renderUser();
     }, 7000);
@@ -44,32 +44,16 @@ export default class Birthday extends React.Component<IIntranetBirthdayProps,IBi
   }
 
   public GetItemsForBirthday() {
-    var BirthdayHandler = this;
-    var anncurl = `${this.props.siteurl}/_api/web/lists/getbytitle('EmployeeContact')/items?$top=1000`;
-    jquery.ajax({
-      url: anncurl,
-      type: "GET",
-      headers: { Accept: "application/json; odata=verbose;" },
-      success: function(resultData) {
-        var dataFiltered = resultData.d.results.filter(
-          data =>
-            new Date(data.DateOfBirth).getDate() == new Date().getDate() &&
-            new Date(data.DateOfBirth).getMonth() == new Date().getMonth() &&
-            data.Status == "Active"
-        );
-        if (
-          dataFiltered != undefined &&
-          dataFiltered != null &&
-          dataFiltered.length > 0
-        ) {
-          BirthdayHandler.setState({
-            items: dataFiltered
-          });
-        }
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        console.log(jqXHR);
-      }
+    axios.get(`${this.props.siteurl}/_api/web/lists/getbytitle('EmployeeContact')/items?$top=1000`)
+    .then(res => {
+      var dataFiltered = res.data.value.filter(
+            data => new Date(data.DateOfBirth).getDate() == new Date().getDate() && new Date(data.DateOfBirth).getMonth() == new Date().getMonth() && data.Status == "Active",
+          );
+       console.log("Birthday data:", dataFiltered);
+      this.setState({ items: dataFiltered });
+    })
+    .catch(error => {
+      console.log(error);
     });
   }
   public render(): React.ReactElement<IIntranetBirthdayProps> {
