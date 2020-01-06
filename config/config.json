@@ -121,6 +121,22 @@
           "manifest": "./src/webparts/intranetPoll/IntranetPollWebPart.manifest.json"
         }
       ]
+    },
+    "intranet-leave-balance-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/intranetLeaveBalance/IntranetLeaveBalanceWebPart.js",
+          "manifest": "./src/webparts/intranetLeaveBalance/IntranetLeaveBalanceWebPart.manifest.json"
+        }
+      ]
+    },
+    "inntranet-in-out-register-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/inntranetInOutRegister/InntranetInOutRegisterWebPart.js",
+          "manifest": "./src/webparts/inntranetInOutRegister/InntranetInOutRegisterWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -141,6 +157,8 @@
     "IntranetJobOpeningWebPartStrings": "lib/webparts/intranetJobOpening/loc/{locale}.js",
     "PeopleDirectoryWebPartStrings": "lib/webparts/peopleDirectory/loc/{locale}.js",
     "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
-    "IntranetPollWebPartStrings": "lib/webparts/intranetPoll/loc/{locale}.js"
+    "IntranetPollWebPartStrings": "lib/webparts/intranetPoll/loc/{locale}.js",
+    "IntranetLeaveBalanceWebPartStrings": "lib/webparts/intranetLeaveBalance/loc/{locale}.js",
+    "InntranetInOutRegisterWebPartStrings": "lib/webparts/inntranetInOutRegister/loc/{locale}.js"
   }
 }

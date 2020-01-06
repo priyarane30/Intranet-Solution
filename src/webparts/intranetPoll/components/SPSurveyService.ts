@@ -3,7 +3,7 @@ import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { IIntranetPollProps } from './IIntranetPollProps';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@microsoft/sp-http';
-import * as jquery from 'jquery'
+import * as jquery from 'jquery';
 export interface ISPSurveyService {
   /**
    * @function
