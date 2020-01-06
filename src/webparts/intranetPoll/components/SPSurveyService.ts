@@ -3,13 +3,13 @@ import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { IIntranetPollProps } from './IIntranetPollProps';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@microsoft/sp-http';
-
+import * as jquery from 'jquery'
 export interface ISPSurveyService {
   /**
    * @function
    * Gets the question from a SharePoint list
    */
-  postVote(surveyListId: string, question: string, choice: string): Promise<boolean>;
+  postVote(surveyListId: string, question: string, choice: string);
 }
 export class SPSurveyService implements ISPSurveyService {
   public context: IWebPartContext;
@@ -23,37 +23,28 @@ export class SPSurveyService implements ISPSurveyService {
     this.props = _props;
     this.context = pageContext;
   }
-  public postVote(surveyListId: string, question: string, choice: string): Promise<boolean> {
-
-    //return this.getListName(surveyListId).then((listName: string) => {
+  public postVote(surveyListId: string, question: string, choice: string) {
     try {
       var restUrl: string = this.context.pageContext.web.absoluteUrl;
-     // restUrl += "/_api/Web/lists/GetByTitle('Poll')/fields"
-      restUrl += "/_api/Web/Lists(guid'";//getbytitle('Poll')/items"//fields(guid'";
-      restUrl += surveyListId;
-      restUrl += "')/fields";
-
+      restUrl += "/_api/Web/lists/GetByTitle('Poll')/fields"
       var item = {
-        "__metadata": { "type": this.getItemTypeForListName("Poll")},//"SP.FieldChoice" },////
+        "__metadata": { "type": "SP.Data.PollListItem" },// this.getItemTypeForListName(listName) },//"SP.FieldChoice" },
         "Title": "newItemTitle"
       };
-      item["StaticName"] = choice;
-
-      var options: ISPHttpClientOptions = {
+      item[question] = choice;
+      jquery.ajax({
+        url: restUrl,
+        method: "POST",
+        contentType: "application/json;odata=verbose",
+        async: false,
+        data: JSON.stringify(item),
         headers: {
-          "odata-version": "3.0",
-          "Accept": "application/json"
+          "Accept": "application/json; odata=verbose",
         },
-        body: JSON.stringify(item),
-        webUrl: this.context.pageContext.web.absoluteUrl
-      };
-      return this.context.spHttpClient.post(restUrl, SPHttpClient.configurations.v1, options).then((response: SPHttpClientResponse) => {
-        return response.json().then((responseFormated: any) => {
-          return true;
-        });
-      }) as Promise<boolean>;
-
-      //}) as Promise<boolean>;
+        success: function (data) {
+          console.log(data);
+        }
+      });
     } catch (error) {
       console.log(error);
     }

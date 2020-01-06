@@ -2,7 +2,6 @@ import * as React from 'react';
 import styles from './IntranetPoll.module.scss';
 import { IIntranetPollProps } from './IIntranetPollProps';
 import { escape } from '@microsoft/sp-lodash-subset';
-import * as jquery from "jquery";
 import { IIntranetPollStates } from './IIntranetPollStates';
 import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions } from '@microsoft/sp-http';
 import { SPSurveyService } from './SPSurveyService';
@@ -75,34 +74,31 @@ export default class IntranetPoll extends React.Component<IIntranetPollProps, II
       if (responseVal == null || responseVal.length == 0)
         return;
       var item = responseVal[0];
-      // this.state.choices = item.Choices;
-      // this.state.question = item.Title;
-      // this.state.questionInternalName = item.StaticName;
       PollHandler.setState({
         choices: item.Choices,
         question: item.Title,
         questionInternalName: item.StaticName
       });
       //Request the existing votes to get current user voting status
-      // listService.getVoteForUser(props.surveyList, item.StaticName, this.myPageContext.pageContext.user.loginName).then((responseVote) => {
-      //   var responseVoteVal = responseVote.value;
+      listService.getVoteForUser(props.surveyList, item.StaticName, this.myPageContext.pageContext.user.loginName).then((responseVote) => {
+        var responseVoteVal = responseVote.value;
 
-      //   if (responseVoteVal.length > 0) {
-      //     // this.state.alreadyVote = true;
-      //     // this.state.selectedValue = responseVoteVal[0].Title;
-      //     PollHandler.setState({
-      //       alreadyVote: true,
-      //       selectedValue: responseVoteVal[0].Title
-      //     })
-      //   }
-      //   else
-      //     PollHandler.setState({ alreadyVote: false })
-      //   //this.state.alreadyVote = false;
+        if (responseVoteVal.length > 0) {
+          // this.state.alreadyVote = true;
+          // this.state.selectedValue = responseVoteVal[0].Title;
+          PollHandler.setState({
+            alreadyVote: true,
+            selectedValue: responseVoteVal[0].Title
+          });
+        }
+        else
+          PollHandler.setState({ alreadyVote: false });
+        //this.state.alreadyVote = false;
 
-      //   //  this.state.loaded = true;
-      //   PollHandler.setState({ loaded: true })
-      //   this.setState(this.state);
-      // });
+        //  this.state.loaded = true;
+        PollHandler.setState({ loaded: true });
+        this.setState(this.state);
+      });
     });
   }
 
@@ -147,11 +143,12 @@ export default class IntranetPoll extends React.Component<IIntranetPollProps, II
     }
     else {
       const listService: SPSurveyService = new SPSurveyService(this.props, this.myPageContext);
-      listService.postVote(this.props.surveyList, this.state.questionInternalName, this.state.selectedValue).then((response) => {
-        //this.state.ID
-
-        this.setState(this.state);
-      });
+      listService.postVote(this.props.surveyList, this.state.questionInternalName, this.state.selectedValue)
+      // .then((response) => {
+      //   //this.state.ID
+      //   console.log(response);
+      //   //this.setState(this.state);
+      // });
     }
 
   }
